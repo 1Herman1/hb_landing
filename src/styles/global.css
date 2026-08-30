@@ -2,6 +2,13 @@
 @import "@fontsource-variable/open-sans";
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Coolvetica';
+  src: url('/hb_landing/fonts/coolvetica.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+
 @theme {
   --color-background: #FAFAF8;
   --color-foreground: #191B1F;
@@ -29,7 +36,8 @@
   --color-accent-wash: rgba(249, 115, 22, 0.10);
   --color-accent-wash-line: rgba(249, 115, 22, 0.22);
 
-  --font-heading: "Montserrat Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: "Coolvetica", "Montserrat Variable", Arial, sans-serif;
+  --font-mono: "Roboto Mono", monospace;
   --font-sans: "Open Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 

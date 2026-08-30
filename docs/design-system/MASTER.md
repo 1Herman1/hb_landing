@@ -45,14 +45,18 @@
 
 ## Типографика
 
-Пара «Grotesk Bold» из `docs/core/typography-pairs.md` (кириллица подтверждена):
+**Три семейства:**
+- **Заголовки (H1/H2):** Coolvetica (self-hosted freeware, 400 вес) — `public/fonts/coolvetica.woff`
+  - Fallback: Montserrat Variable (700/800) — `@fontsource-variable/montserrat`
+- **Основной текст (body/абзацы):** Open Sans Variable, веса 400/600 — `@fontsource-variable/open-sans`
+- **UI-текст (теги, навигация, кнопки, подписи):** Roboto Mono, веса 400/500 —
+  `@fontsource/roboto-mono` (включая cyrillic-400, cyrillic-500)
 
-- **Заголовки:** Montserrat Variable, веса 700/800 — `@fontsource-variable/montserrat`
-- **Текст:** Open Sans Variable, веса 400/600 — `@fontsource-variable/open-sans`
-- Подключение локально через fontsource (без внешних запросов); проверить, что
-  cyrillic-сабсет попал в бандл
-- Fallback-стек: `system-ui, -apple-system, "Segoe UI", sans-serif` — слово
-  «Inter» не должно встречаться нигде, даже в fallback
+Подключение локально через fontsource и self-hosted WOFF (без внешних запросов);
+проверить, что cyrillic-сабсет попал в бандл.
+Fallback-стек: `Arial, sans-serif` для Coolvetica (геометричный гротеск),
+`monospace` для Roboto Mono, `system-ui, -apple-system, "Segoe UI", sans-serif`
+для Open Sans — слово «Inter» не должно встречаться нигде, даже в fallback
 
 Шкала:
 - h1 (hero): `clamp(2.75rem, 7vw, 5.5rem)`, Montserrat 800
