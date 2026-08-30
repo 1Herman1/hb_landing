@@ -9,10 +9,10 @@ const { number, title, class: className = '' } = Astro.props;
 ---
 
 <div class={`mb-12 ${className}`}>
-  <div class="text-muted-foreground font-medium mb-2 text-sm tracking-wide">
+  <div class="text-on-dark-faint font-medium mb-2 text-base tracking-[0.14em] uppercase">
     {number}
   </div>
-  <h2 class="text-[clamp(2rem,4vw,3.25rem)] font-bold font-heading text-foreground max-w-3xl">
+  <h2 class="text-[clamp(2rem,4vw,3.25rem)] font-bold font-heading text-on-dark max-w-3xl leading-[1.05]">
     {title}
   </h2>
 </div>

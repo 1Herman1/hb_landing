@@ -5,14 +5,14 @@ import Tag from '../ui/Tag.astro';
 import { cases } from '../../content/cases';
 ---
 
-<section id="works" class="py-24 md:py-32">
+<section id="works" class="py-24 md:py-32 border-t border-dark-divider">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
-    <SectionTitle number="03 / Избранные работы" title="Портфолио" />
+    <SectionTitle number="03 /" title="Портфолио" />
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {cases.map((caseItem) => (
-        <article class="border border-line rounded-2xl overflow-hidden bg-surface">
-          <div class="aspect-[16/10] overflow-hidden">
+        <article class="border border-dark-line rounded-2xl overflow-hidden bg-dark-surface hover:bg-dark-surface-hover hover:border-dark-line-strong transition-colors duration-200">
+          <div class="aspect-[16/10] overflow-hidden rounded-t-xl">
             <Image
               src={caseItem.image}
               alt={caseItem.name}
@@ -22,11 +22,12 @@ import { cases } from '../../content/cases';
               decoding="async"
               sizes="100vw"
               class="w-full h-full object-cover"
+              style="filter: brightness(.72) contrast(1.1);"
             />
           </div>
 
           <div class="p-8">
-            <h3 class="text-2xl font-bold font-heading text-foreground mb-4">{caseItem.name}</h3>
+            <h3 class="text-2xl font-bold font-heading text-on-dark mb-4">{caseItem.name}</h3>
 
             <div class="flex flex-wrap gap-2 mb-6">
               {caseItem.tags.map((tag) => (
@@ -35,20 +36,20 @@ import { cases } from '../../content/cases';
             </div>
 
             <details class="group">
-              <summary class="inline-flex items-center min-h-[44px] cursor-pointer text-accent hover:text-accent-hover transition-colors font-medium">
+              <summary class="inline-flex items-center min-h-[44px] cursor-pointer text-accent-on-dark hover:text-accent-on-dark-hv transition-colors duration-200 font-medium">
                 Подробнее →
               </summary>
-              <div class="mt-6 space-y-4 text-foreground">
+              <div class="mt-6 space-y-4 text-on-dark-body">
                 <div>
-                  <h4 class="font-bold text-sm text-muted-foreground mb-2">Задача</h4>
+                  <h4 class="font-bold text-sm text-on-dark-muted mb-2">Задача</h4>
                   <p class="leading-relaxed">{caseItem.task}</p>
                 </div>
                 <div>
-                  <h4 class="font-bold text-sm text-muted-foreground mb-2">Решение</h4>
+                  <h4 class="font-bold text-sm text-on-dark-muted mb-2">Решение</h4>
                   <p class="leading-relaxed">{caseItem.solution}</p>
                 </div>
                 <div>
-                  <h4 class="font-bold text-sm text-muted-foreground mb-2">Результат</h4>
+                  <h4 class="font-bold text-sm text-on-dark-muted mb-2">Результат</h4>
                   <p class="leading-relaxed">{caseItem.result}</p>
                 </div>
               </div>
@@ -73,14 +74,6 @@ import { cases } from '../../content/cases';
     display: inline-flex;
   }
 
-  summary::after {
-    content: '';
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    margin-left: 0.5em;
-    transition: transform 200ms ease-out;
-  }
 
   details[open] summary::after {
     transform: rotate(90deg);
