@@ -133,7 +133,7 @@ const BASE_URL = import.meta.env.BASE_URL;
     <!-- Contact button (below heading) -->
     <button
       id="hero-contact-btn"
-      class="rounded-full transition-colors duration-200 flex items-center justify-center flex-shrink-0"
+      class="rounded-full transition-transform duration-200 flex items-center justify-center flex-shrink-0 hover:invert"
       style="
         width: clamp(60px, 5.83vw, 84px);
         height: clamp(60px, 5.83vw, 84px);
@@ -197,7 +197,7 @@ const BASE_URL = import.meta.env.BASE_URL;
           charSpan.textContent = char;
           charSpan.className = 'char-in';
           charSpan.style.display = 'inline';
-          charSpan.style.animationDelay = `${globalCharIndex * 26}ms`;
+          charSpan.style.animationDelay = `${500 + globalCharIndex * 26}ms`;
           charSpan.style.color = 'inherit'; // Inherit from parent span.block
           lineSpan.appendChild(charSpan);
           globalCharIndex++;

@@ -7,12 +7,16 @@ import { cases } from '../../content/cases';
 
 <section id="works" class="py-24 md:py-32 border-t border-dark-divider">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
-    <SectionTitle number="03 /" title="Портфолио" />
+    <SectionTitle number="03 /">
+      <span class="text-accent-on-dark">ИЗБРАННЫЕ</span> работы
+    </SectionTitle>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {cases.map((caseItem) => (
-        <article class="border border-dark-line rounded-2xl overflow-hidden bg-dark-surface hover:bg-dark-surface-hover hover:border-dark-line-strong transition-colors duration-200">
-          <div class="aspect-[16/10] overflow-hidden rounded-t-xl">
+        <article class="border border-dark-line rounded-2xl overflow-hidden bg-dark-surface hover:bg-dark-surface-hover hover:border-dark-line-strong transition-[background-color,border-color] duration-200">
+          <!-- Обложка ВСЕГДА видна, вне details -->
+          <div class="aspect-[16/10] overflow-hidden rounded-t-xl relative group cursor-pointer">
+            <!-- Image -->
             <Image
               src={caseItem.image}
               alt={caseItem.name}
@@ -24,37 +28,49 @@ import { cases } from '../../content/cases';
               class="w-full h-full object-cover"
               style="filter: brightness(.72) contrast(1.1);"
             />
-          </div>
 
-          <div class="p-8">
-            <h3 class="text-2xl font-bold font-heading text-on-dark mb-4">{caseItem.name}</h3>
-
-            <div class="flex flex-wrap gap-2 mb-6">
+            <!-- Tags overlay top-left -->
+            <div class="absolute top-3 left-3 flex flex-wrap gap-2">
               {caseItem.tags.map((tag) => (
-                <Tag>{tag}</Tag>
+                <span class="inline-flex px-3 py-1.5 rounded-full font-mono uppercase text-xs font-medium" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); color: white;">
+                  {tag}
+                </span>
               ))}
             </div>
 
-            <details class="group">
-              <summary class="inline-flex items-center min-h-[44px] cursor-pointer text-accent-on-dark hover:text-accent-on-dark-hv transition-colors duration-200 font-medium">
-                Подробнее →
-              </summary>
-              <div class="mt-6 space-y-4 text-on-dark-body">
-                <div>
-                  <h4 class="font-bold text-sm text-on-dark-muted mb-2">Задача</h4>
-                  <p class="leading-relaxed">{caseItem.task}</p>
-                </div>
-                <div>
-                  <h4 class="font-bold text-sm text-on-dark-muted mb-2">Решение</h4>
-                  <p class="leading-relaxed">{caseItem.solution}</p>
-                </div>
-                <div>
-                  <h4 class="font-bold text-sm text-on-dark-muted mb-2">Результат</h4>
-                  <p class="leading-relaxed">{caseItem.result}</p>
-                </div>
-              </div>
-            </details>
+            <!-- Read case button bottom-left (trigger для details) -->
+            <button
+              class="absolute bottom-5 left-5 inline-flex items-center justify-center px-6 h-[46px] rounded-full font-mono font-bold text-sm cursor-pointer transition-colors duration-300 group-hover:text-white"
+              style="background: #F5F5F5; color: #090909;"
+              onclick="this.closest('article').querySelector('details').open = !this.closest('article').querySelector('details').open"
+            >
+              Читать кейс
+            </button>
           </div>
+
+          <!-- Название кейса ВСЕГДА видно, вне details -->
+          <div class="p-8">
+            <h3 class="text-2xl font-bold font-heading text-on-dark mb-6">{caseItem.name}</h3>
+          </div>
+
+          <!-- Details с содержимым - раскрывается по клику на пилюлю -->
+          <details class="group">
+            <summary style="display: none;"></summary>
+            <div class="px-8 pb-8 space-y-4 text-on-dark-body border-t border-dark-line">
+              <div>
+                <h4 class="font-bold text-sm text-on-dark-muted mb-2 font-mono uppercase tracking-[0.14em]">Задача</h4>
+                <p class="leading-relaxed">{caseItem.task}</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-on-dark-muted mb-2 font-mono uppercase tracking-[0.14em]">Решение</h4>
+                <p class="leading-relaxed">{caseItem.solution}</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-on-dark-muted mb-2 font-mono uppercase tracking-[0.14em]">Результат</h4>
+                <p class="leading-relaxed">{caseItem.result}</p>
+              </div>
+            </div>
+          </details>
         </article>
       ))}
     </div>
@@ -72,10 +88,21 @@ import { cases } from '../../content/cases';
 
   summary {
     display: inline-flex;
+    position: relative;
+    overflow: hidden;
   }
 
+  summary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #F97316;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+  }
 
-  details[open] summary::after {
-    transform: rotate(90deg);
+  summary:hover::before {
+    transform: translateY(0);
   }
 </style>

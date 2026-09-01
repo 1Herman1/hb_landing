@@ -1,5 +1,5 @@
 ---
-type Variant = 'primary' | 'ghost';
+type Variant = 'primary' | 'primary-cta' | 'ghost';
 type Size = 'sm' | 'md' | 'lg';
 
 interface Props {
@@ -12,28 +12,45 @@ interface Props {
 const { href, variant = 'primary', size = 'md', class: className = '' } = Astro.props;
 
 const baseClasses =
-  'inline-flex items-center justify-center font-medium transition-colors duration-200 ease-out rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-dark';
+  'inline-flex items-center justify-center font-mono font-bold transition-transform duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-dark relative overflow-hidden';
 
 const variantClasses = {
-  primary: 'bg-accent text-white hover:bg-accent-hover',
-  ghost: 'border border-dark-line text-on-dark hover:bg-dark-surface-hover',
+  primary: 'bg-[#F5F5F5] text-[#090909] rounded-full hover:text-white',
+  'primary-cta': 'bg-accent text-white rounded-full hover:bg-accent-hover',
+  ghost: 'border border-dark-line text-on-dark hover:bg-dark-surface-hover rounded-full',
 };
 
 const sizeClasses = {
   sm: 'px-4 py-2 text-sm min-h-[44px]',
   md: 'px-6 py-3 text-base min-h-[44px]',
-  lg: 'px-8 py-4 text-lg min-h-[44px]',
+  lg: 'px-6 py-3 text-base min-h-[46px]',
 };
 
 const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 ---
 
 {href ? (
-  <a href={href} class={classes}>
+  <a href={href} class={classes} data-variant={variant}>
     <slot />
   </a>
 ) : (
-  <button class={classes}>
+  <button class={classes} data-variant={variant}>
     <slot />
   </button>
 )}
+
+<style>
+  [data-variant='primary']::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #F97316;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+    z-index: -1;
+  }
+
+  [data-variant='primary']:hover::before {
+    transform: translateY(0);
+  }
+</style>

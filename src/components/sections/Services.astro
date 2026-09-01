@@ -4,7 +4,9 @@ import SectionTitle from '../ui/SectionTitle.astro';
 
 <section id="services" class="py-24 md:py-32 border-t border-dark-divider">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
-    <SectionTitle number="01 /" title="Услуги" />
+    <SectionTitle number="01 /">
+      Что мы <span class="text-accent-on-dark">ДЕЛАЕМ</span>
+    </SectionTitle>
 
     <p class="text-lg leading-relaxed text-on-dark-body max-w-[65ch] mb-12 md:mb-16">
       Делаю сайты, сервисы и внутренние системы, которые зарабатывают для бизнеса, — и подключаю искусственный интеллект там, где он реально экономит время и деньги.
@@ -20,11 +22,11 @@ import SectionTitle from '../ui/SectionTitle.astro';
         { num: '06', title: 'Внедрение ИИ в продукты', desc: 'Добавляем в ваш сайт или сервис умного помощника: консультации клиентов, подбор товара, ответы на вопросы 24/7.' },
       ].map(({ num, title, desc }) => (
         <div class="border-t border-dark-divider py-8 md:py-10 flex gap-8 md:gap-12 hover:bg-dark-surface-hover transition-colors duration-200 -mx-5 md:-mx-8 px-5 md:px-8">
-          <div class="flex-shrink-0 w-16 md:w-24 text-right tabular-nums">
-            <div class="text-4xl md:text-5xl font-bold font-heading text-on-dark-faint">{num}</div>
+          <div class="flex-shrink-0 w-16 md:w-24 text-right tabular-nums font-mono font-bold text-on-dark-faint">
+            <div class="text-base tracking-wide">{num}</div>
           </div>
           <div class="flex-grow">
-            <h3 class="text-2xl md:text-3xl font-bold font-heading text-on-dark mb-3">{title}</h3>
+            <h3 class="text-[clamp(22px,2.5vw,28px)] font-bold font-heading text-on-dark mb-3">{title}</h3>
             <p class="text-base leading-relaxed text-on-dark-body max-w-[65ch]">{desc}</p>
           </div>
         </div>

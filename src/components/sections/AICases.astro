@@ -4,7 +4,9 @@ import SectionTitle from '../ui/SectionTitle.astro';
 
 <section id="ai-cases" class="py-24 md:py-32 border-t border-dark-divider">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
-    <SectionTitle number="04 /" title="ИИ-кейсы" />
+    <SectionTitle number="04 /">
+      ИИ в <span class="text-accent-on-dark">РЕАЛЬНЫХ</span> задачах
+    </SectionTitle>
 
     <div class="space-y-12">
       {[
@@ -54,7 +56,7 @@ import SectionTitle from '../ui/SectionTitle.astro';
             <div class="flex flex-col gap-3">
               {metrics.map((metric) => (
                 <div class="px-4 py-3 bg-accent-wash rounded-lg border border-accent-wash-line">
-                  <span class="text-accent-on-dark font-bold font-heading text-lg tabular-nums">{metric}</span>
+                  <span class="text-accent-on-dark font-bold font-mono text-sm tabular-nums">{metric}</span>
                 </div>
               ))}
             </div>
