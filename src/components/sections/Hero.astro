@@ -78,25 +78,32 @@ const BASE_URL = import.meta.env.BASE_URL;
 
       <!-- Floating chips - positioned absolutely from the 1200px container -->
       <!-- Chip 1: "Сайты и сервисы" - left 57.75% top 124px (desktop) / 115px (mobile ~390) -->
-      <div class="absolute pointer-events-auto" style="left: 57.75%; top: clamp(115px, 12.4vw, 124px); transform: translateX(-50%);">
+      <div class="absolute pointer-events-auto hidden md:block" style="left: 57.75%; top: clamp(115px, 12.4vw, 124px); transform: translateX(-50%);">
         <div class="px-4 py-2 rounded-full" style="height: clamp(34px, 3.17vw, 46px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); font-family: var(--font-mono); font-weight: 400; color: white; font-size: clamp(12px, 1.17vw, 16.8px); display: inline-flex; align-items: center; white-space: nowrap; line-height: 1.2;">
           Сайты и сервисы
         </div>
       </div>
 
       <!-- Chip 2: "SaaS" - left 35.25% top 239px (desktop) / 216px (mobile) -->
-      <div class="absolute pointer-events-auto" style="left: 35.25%; top: clamp(216px, 23.9vw, 239px); transform: translateX(-50%);">
+      <div class="absolute pointer-events-auto hidden md:block" style="left: 35.25%; top: clamp(216px, 23.9vw, 239px); transform: translateX(-50%);">
         <div class="px-4 py-2 rounded-full" style="height: clamp(34px, 3.17vw, 46px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); font-family: var(--font-mono); font-weight: 400; color: white; font-size: clamp(12px, 1.17vw, 16.8px); display: inline-flex; align-items: center; white-space: nowrap; line-height: 1.2;">
           SaaS
         </div>
       </div>
 
       <!-- Chip 3: "ИИ-решения" - left 54.8% top 364px (desktop) / 309px (mobile) -->
-      <div class="absolute pointer-events-auto" style="left: 54.8%; top: clamp(309px, 36.4vw, 364px); transform: translateX(-50%);">
+      <div class="absolute pointer-events-auto hidden md:block" style="left: 54.8%; top: clamp(309px, 36.4vw, 364px); transform: translateX(-50%);">
         <div class="px-4 py-2 rounded-full" style="height: clamp(34px, 3.17vw, 46px); background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); font-family: var(--font-mono); font-weight: 400; color: white; font-size: clamp(12px, 1.17vw, 16.8px); display: inline-flex; align-items: center; white-space: nowrap; line-height: 1.2;">
           ИИ-решения
         </div>
       </div>
+    </div>
+
+    <!-- Mobile chips: flow row under the video (absolute chips are md+ only) -->
+    <div class="flex md:hidden flex-wrap justify-center gap-2 px-4 mt-1 mb-3 relative z-20">
+      {['Сайты и сервисы', 'SaaS', 'ИИ-решения'].map((label) => (
+        <div class="px-4 rounded-full font-mono text-white" style="height: 34px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.7); backdrop-filter: blur(12px); font-size: 12px; display: inline-flex; align-items: center; white-space: nowrap;">{label}</div>
+      ))}
     </div>
 
     <!-- Facts line (overlaps video slightly) -->
@@ -117,7 +124,7 @@ const BASE_URL = import.meta.env.BASE_URL;
     <h1
       class="font-heading uppercase text-center"
       style="
-        font-size: clamp(45px, 6.4vw, 92px);
+        font-size: clamp(32px, 8.5vw, 92px); text-wrap: balance;
         line-height: 1.0;
         letter-spacing: 0;
         margin-top: clamp(12px, 1.37vw, 22px);
@@ -126,8 +133,8 @@ const BASE_URL = import.meta.env.BASE_URL;
         padding: 0 16px;
       "
     >
-      <span class="block" style="color: #F5F5F5; white-space: nowrap;">ГЕРМАН БРЫЗГАЛОВ</span>
-      <span class="block" style="color: #F97316; white-space: nowrap;">РАЗРАБОТКА И ИИ</span>
+      <span class="block" style="color: #F5F5F5;">ГЕРМАН БРЫЗГАЛОВ</span>
+      <span class="block" style="color: #F97316;">РАЗРАБОТКА И ИИ</span>
     </h1>
 
     <!-- Contact button (below heading) -->
