@@ -1,15 +1,13 @@
 ---
 import Button from '../ui/Button.astro';
+import SectionTitle from '../ui/SectionTitle.astro';
 ---
 
 <section id="contacts" class="py-24 md:py-32 border-t border-dark-divider">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
-    <div class="mb-12">
-      <div class="text-on-dark-faint text-sm font-mono font-medium mb-2 uppercase tracking-[0.14em]">06 /</div>
-      <h2 class="text-[clamp(34px,4.5vw,65px)] font-bold font-heading text-on-dark mb-8 max-w-3xl leading-[1.0]">
-        <span class="text-accent-on-dark">КОНТАКТЫ</span>
-      </h2>
-    </div>
+    <SectionTitle number="06 /">
+      <span class="text-accent-on-dark">КОНТАКТЫ</span>
+    </SectionTitle>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
       <a href="https://t.me/h_and_b_team" class="p-6 border border-dark-line rounded-2xl hover:bg-dark-surface-hover hover:border-dark-line-strong transition-colors duration-200">

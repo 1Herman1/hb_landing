@@ -12,7 +12,7 @@ const { number, title, class: className = '' } = Astro.props;
   <div class="text-on-dark-faint font-mono font-medium mb-2 text-sm tracking-[0.14em] uppercase">
     {number}
   </div>
-  <h2 class="text-[clamp(34px,4.5vw,65px)] font-bold font-heading text-on-dark leading-[1.0] mx-auto max-w-4xl section-title">
+  <h2 class="text-[clamp(34px,4.5vw,65px)] font-bold font-heading text-on-dark leading-[1.06] mx-auto max-w-4xl section-title" style="text-wrap: balance;">
     <slot />
   </h2>
 </div>
@@ -27,19 +27,65 @@ const { number, title, class: className = '' } = Astro.props;
 
         if (!prefersReducedMotion) {
           const titleEl = entry.target as HTMLElement;
-          const text = titleEl.textContent || '';
-          titleEl.textContent = '';
+          const fragment = document.createDocumentFragment();
 
-          let charIndex = 0;
-          text.split('').forEach((char) => {
-            const span = document.createElement('span');
-            span.textContent = char;
-            span.className = 'section-char';
-            span.style.display = 'inline-block';
-            span.style.animationDelay = `${charIndex * 26}ms`;
-            titleEl.appendChild(span);
-            charIndex++;
-          });
+          // Process child nodes to preserve structure (e.g., colored spans)
+          let wordIndex = 0;
+          const processNode = (node: Node) => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              const text = node.textContent || '';
+              const words = text.split(/(\s+)/); // Keep whitespace
+              words.forEach((word) => {
+                if (/\s/.test(word)) {
+                  // Whitespace: add as-is
+                  fragment.appendChild(document.createTextNode(word));
+                } else if (word.length > 0) {
+                  // Non-whitespace: wrap in span with animation
+                  const span = document.createElement('span');
+                  span.textContent = word;
+                  span.className = 'section-word';
+                  span.style.display = 'inline-block';
+                  span.style.animationDelay = `${wordIndex * 40}ms`;
+                  fragment.appendChild(span);
+                  wordIndex++;
+                }
+              });
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              // Preserve element structure (e.g., <span class="text-accent-on-dark">)
+              const elem = node as HTMLElement;
+              const clonedElem = elem.cloneNode(false) as HTMLElement;
+              let elemWordIndex = 0;
+
+              elem.childNodes.forEach((child) => {
+                if (child.nodeType === Node.TEXT_NODE) {
+                  const text = child.textContent || '';
+                  const words = text.split(/(\s+)/);
+                  words.forEach((word) => {
+                    if (/\s/.test(word)) {
+                      clonedElem.appendChild(document.createTextNode(word));
+                    } else if (word.length > 0) {
+                      const span = document.createElement('span');
+                      span.textContent = word;
+                      span.className = 'section-word';
+                      span.style.display = 'inline-block';
+                      span.style.animationDelay = `${wordIndex * 40}ms`;
+                      clonedElem.appendChild(span);
+                      wordIndex++;
+                      elemWordIndex++;
+                    }
+                  });
+                } else {
+                  clonedElem.appendChild(child.cloneNode(true));
+                }
+              });
+
+              fragment.appendChild(clonedElem);
+            }
+          };
+
+          titleEl.childNodes.forEach(processNode);
+          titleEl.innerHTML = '';
+          titleEl.appendChild(fragment);
         }
         observer.unobserve(entry.target);
       }
@@ -52,7 +98,7 @@ const { number, title, class: className = '' } = Astro.props;
 </script>
 
 <style>
-  @keyframes section-char-in {
+  @keyframes section-word-in {
     from {
       opacity: 0;
       filter: blur(20px);
@@ -63,12 +109,12 @@ const { number, title, class: className = '' } = Astro.props;
     }
   }
 
-  :global(.section-char) {
-    animation: section-char-in 0.6s ease forwards;
+  :global(.section-word) {
+    animation: section-word-in 0.6s ease forwards;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    :global(.section-char) {
+    :global(.section-word) {
       animation: none;
       opacity: 1;
       filter: none;

@@ -86,7 +86,8 @@ Fallback-стек: `Arial, sans-serif` для Coolvetica (геометричны
 
 - Hover карточек: смена `background-color` и `border-color`, 200ms ease-out (НЕ translateY)
 - Hover текстовых ссылок: смена `color`, 200ms ease-out
-- Появление секций: fade + translateY(8px), stagger 60ms, только CSS
+- Появление секций 1–2: fade + translateY(8px), 600ms ease-out; остальные секции без анимации
+- Заголовки секций: побословная анимация reveal (600ms ease), delay per word
 - `prefers-reduced-motion: reduce` глушит всё, включая автоплей видео-баннера
   (показывается постер)
 - Запрещено: bounce/elastic easing, scroll-driven анимации, translate при hover

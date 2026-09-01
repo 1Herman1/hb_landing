@@ -38,29 +38,27 @@ import SectionTitle from '../ui/SectionTitle.astro';
             <h3 class="text-3xl font-bold font-heading text-on-dark mb-6">{title}</h3>
             <div class="space-y-4">
               <div>
-                <h4 class="text-sm font-bold text-on-dark-muted mb-2 uppercase tracking-[0.14em]">ЗАДАЧА</h4>
+                <h4 class="text-sm font-bold font-mono text-on-dark-muted mb-2 uppercase tracking-[0.14em]">ЗАДАЧА</h4>
                 <p class="text-on-dark-body max-w-[65ch]">{task}</p>
               </div>
               <div>
-                <h4 class="text-sm font-bold text-on-dark-muted mb-2 uppercase tracking-[0.14em]">ЧТО СДЕЛАЛИ</h4>
+                <h4 class="text-sm font-bold font-mono text-on-dark-muted mb-2 uppercase tracking-[0.14em]">ЧТО СДЕЛАЛИ</h4>
                 <p class="text-on-dark-body max-w-[65ch]">{solution}</p>
               </div>
               <div>
-                <h4 class="text-sm font-bold text-on-dark-muted mb-2 uppercase tracking-[0.14em]">РЕЗУЛЬТАТ</h4>
+                <h4 class="text-sm font-bold font-mono text-on-dark-muted mb-2 uppercase tracking-[0.14em]">РЕЗУЛЬТАТ</h4>
                 <p class="text-on-dark-body max-w-[65ch]">{result}</p>
               </div>
             </div>
           </div>
 
-          <div>
-            <div class="flex flex-col gap-3">
+          <div class="flex flex-col items-start gap-3">
               {metrics.map((metric) => (
-                <div class="px-4 py-3 bg-accent-wash rounded-lg border border-accent-wash-line">
+                <div class="px-4 py-3 bg-accent-wash rounded-lg border border-accent-wash-line w-fit">
                   <span class="text-accent-on-dark font-bold font-mono text-sm tabular-nums">{metric}</span>
                 </div>
               ))}
             </div>
-          </div>
         </article>
       ))}
     </div>

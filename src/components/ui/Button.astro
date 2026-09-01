@@ -15,7 +15,7 @@ const baseClasses =
   'inline-flex items-center justify-center font-mono font-bold transition-transform duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-dark relative overflow-hidden';
 
 const variantClasses = {
-  primary: 'bg-[#F5F5F5] text-[#090909] rounded-full hover:text-white',
+  primary: 'text-[#090909] rounded-full hover:text-white',
   'primary-cta': 'bg-accent text-white rounded-full hover:bg-accent-hover',
   ghost: 'border border-dark-line text-on-dark hover:bg-dark-surface-hover rounded-full',
 };
@@ -40,6 +40,10 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
 )}
 
 <style>
+  [data-variant='primary'] {
+    position: relative;
+  }
+
   [data-variant='primary']::before {
     content: '';
     position: absolute;
@@ -47,10 +51,23 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
     background: #F97316;
     transform: translateY(100%);
     transition: transform 0.4s ease;
-    z-index: -1;
+    z-index: 0;
   }
 
-  [data-variant='primary']:hover::before {
-    transform: translateY(0);
+  [data-variant='primary']::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #F5F5F5;
+    z-index: 0;
+  }
+
+  [data-variant='primary']:hover::after {
+    background: transparent;
+  }
+
+  [data-variant='primary'] :global(*) {
+    position: relative;
+    z-index: 1;
   }
 </style>

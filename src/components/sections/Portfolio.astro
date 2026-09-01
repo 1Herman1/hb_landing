@@ -32,7 +32,7 @@ import { cases } from '../../content/cases';
             <!-- Tags overlay top-left -->
             <div class="absolute top-3 left-3 flex flex-wrap gap-2">
               {caseItem.tags.map((tag) => (
-                <span class="inline-flex px-3 py-1.5 rounded-full font-mono uppercase text-xs font-medium" style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); color: white;">
+                <span class="inline-flex px-3 py-1.5 rounded-full font-mono uppercase text-xs font-medium" style="background: rgba(9, 9, 9, 0.6); border: 1px solid rgba(255, 255, 255, 0.35); backdrop-filter: blur(10px); color: white;">
                   {tag}
                 </span>
               ))}
@@ -40,23 +40,23 @@ import { cases } from '../../content/cases';
 
             <!-- Read case button bottom-left (trigger для details) -->
             <button
-              class="absolute bottom-5 left-5 inline-flex items-center justify-center px-6 h-[46px] rounded-full font-mono font-bold text-sm cursor-pointer transition-colors duration-300 group-hover:text-white"
+              class="absolute bottom-5 left-5 inline-flex items-center justify-center px-6 h-[46px] rounded-full font-mono font-bold text-sm cursor-pointer transition-colors duration-300 group-hover:text-white case-toggle"
               style="background: #F5F5F5; color: #090909;"
-              onclick="this.closest('article').querySelector('details').open = !this.closest('article').querySelector('details').open"
+              data-case-item={caseItem.id || ''}
             >
               Читать кейс
             </button>
           </div>
 
           <!-- Название кейса ВСЕГДА видно, вне details -->
-          <div class="p-8">
-            <h3 class="text-2xl font-bold font-heading text-on-dark mb-6">{caseItem.name}</h3>
+          <div class="p-6 md:p-8">
+            <h3 class="text-2xl font-bold font-heading text-on-dark mb-0">{caseItem.name}</h3>
           </div>
 
           <!-- Details с содержимым - раскрывается по клику на пилюлю -->
           <details class="group">
             <summary style="display: none;"></summary>
-            <div class="px-8 pb-8 space-y-4 text-on-dark-body border-t border-dark-line">
+            <div class="p-6 md:p-8 space-y-4 text-on-dark-body border-t border-dark-line">
               <div>
                 <h4 class="font-bold text-sm text-on-dark-muted mb-2 font-mono uppercase tracking-[0.14em]">Задача</h4>
                 <p class="leading-relaxed">{caseItem.task}</p>
@@ -76,6 +76,22 @@ import { cases } from '../../content/cases';
     </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('.case-toggle').forEach(button => {
+    const details = button.closest('article')?.querySelector('details');
+    if (!details) return;
+
+    button.addEventListener('click', () => {
+      details.open = !details.open;
+      button.setAttribute('aria-expanded', String(details.open));
+      button.textContent = details.open ? 'Свернуть' : 'Читать кейс';
+    });
+
+    // Init aria-expanded
+    button.setAttribute('aria-expanded', 'false');
+  });
+</script>
 
 <style>
   details {

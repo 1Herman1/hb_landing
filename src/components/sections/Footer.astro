@@ -39,8 +39,7 @@
 
       <!-- Top button -->
       <button
-        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        class="flex items-center justify-center font-mono font-bold text-base md:text-lg p-4 md:p-6 border rounded-2xl transition-[filter] duration-200 ease-in-out hover:invert"
+        class="flex items-center justify-center font-mono font-bold text-base md:text-lg p-4 md:p-6 border rounded-2xl transition-[filter] duration-200 ease-in-out hover:invert scroll-to-top"
         style="height: clamp(96px, 15vw, 138px); color: #F4F4F1; border-color: rgba(244, 244, 241, 0.7);"
         aria-label="Наверх"
       >
@@ -49,3 +48,11 @@
     </div>
   </div>
 </footer>
+
+<script>
+  const scrollToTopBtn = document.querySelector('.scroll-to-top');
+  scrollToTopBtn?.addEventListener('click', () => {
+    const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+    window.scrollTo({ top: 0, behavior });
+  });
+</script>
