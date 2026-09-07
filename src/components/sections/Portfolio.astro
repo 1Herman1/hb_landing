@@ -15,22 +15,21 @@ import { cases } from '../../content/cases';
       {cases.map((caseItem) => (
         <article class="border border-dark-line rounded-2xl overflow-hidden bg-dark-surface hover:bg-dark-surface-hover hover:border-dark-line-strong transition-[background-color,border-color] duration-200">
           <!-- Название ВСЕГДА видно сверху -->
-          <div class="p-6 md:p-8 pb-0">
+          <div class="px-6 md:px-8 pt-6 md:pt-8 pb-4">
             <h3 class="text-2xl font-bold font-heading text-on-dark">{caseItem.name}</h3>
           </div>
 
           <!-- Обложка ВСЕГДА видна, вне details -->
-          <div class="aspect-[16/10] overflow-hidden rounded-t-xl relative group cursor-pointer" data-case-toggle-wrapper>
+          <div class="aspect-[16/10] overflow-hidden relative group cursor-pointer" data-case-toggle-wrapper>
             <!-- Image -->
             <Image
               src={caseItem.image}
               alt={caseItem.name}
-              width={1600}
+              width={1120}
               format="webp"
               loading="lazy"
               decoding="async"
-              sizes="100vw"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover group-hover:brightness-90 transition-[filter] duration-200"
               style="filter: brightness(.72) contrast(1.1);"
             />
 
@@ -52,7 +51,22 @@ import { cases } from '../../content/cases';
               class="inline-flex items-center gap-2 min-h-[44px] text-on-dark-body hover:text-accent-on-dark transition-colors duration-300"
               aria-label={`Читать кейс: ${caseItem.name}`}
             >
-              Читать кейс <span aria-hidden="true" class="text-accent-on-dark">→</span>
+              Читать кейс
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class="inline-block flex-shrink-0 text-accent-on-dark"
+              >
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
             </button>
           </div>
 
@@ -97,16 +111,27 @@ import { cases } from '../../content/cases';
 </section>
 
 <script>
+  const arrowSvg = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="inline-block flex-shrink-0 text-accent-on-dark"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+
   document.querySelectorAll('article').forEach(article => {
     const button = article.querySelector('[data-case-toggle]');
     const cover = article.querySelector('[data-case-toggle-wrapper]');
     const details = article.querySelector('details');
     if (!details || !button) return;
 
+    // Store the original case name from aria-label
+    const originalLabel = button.getAttribute('aria-label') || '';
+    const caseName = originalLabel.split(': ')[1] || '';
+
     const toggle = () => {
       details.open = !details.open;
       button.setAttribute('aria-expanded', String(details.open));
-      button.innerHTML = details.open ? 'Свернуть' : 'Читать кейс <span aria-hidden="true" class="text-accent-on-dark">→</span>';
+      if (details.open) {
+        button.setAttribute('aria-label', 'Свернуть');
+      } else {
+        button.setAttribute('aria-label', originalLabel);
+      }
+      button.innerHTML = details.open ? 'Свернуть' : `Читать кейс ${arrowSvg}`;
     };
 
     button.addEventListener('click', toggle);

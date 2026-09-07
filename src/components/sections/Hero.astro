@@ -63,10 +63,12 @@ const chips = [
           loop
           playsinline
           preload="auto"
-          poster={`${BASE_URL}media/hero/germes.jpg`}
+          poster={`${BASE_URL}media/hero/germes.webp`}
+          fetchpriority="high"
           aria-hidden="true"
           class="w-full h-full object-cover"
         >
+          <source src={`${BASE_URL}media/hero/germes-mobile.mp4`} type="video/mp4" media="(max-width: 767px)" />
           <source src={`${BASE_URL}media/hero/germes.mp4`} type="video/mp4" />
         </video>
       </div>

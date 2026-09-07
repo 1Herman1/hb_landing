@@ -1,8 +1,6 @@
 ---
 import '@fontsource/roboto-mono/400.css';
 import '@fontsource/roboto-mono/500.css';
-import '@fontsource/roboto-mono/cyrillic-400.css';
-import '@fontsource/roboto-mono/cyrillic-500.css';
 import '../styles/global.css';
 
 interface Props {
@@ -36,6 +34,7 @@ const BASE_URL = import.meta.env.BASE_URL;
     <link rel="canonical" href="https://1herman1.github.io/hb_landing/" />
     <link rel="icon" href={`${BASE_URL}favicon.svg`} />
     <link rel="apple-touch-icon" href={`${BASE_URL}apple-touch-icon.png`} />
+    <link rel="preload" as="font" type="font/woff" href={`${BASE_URL}fonts/coolvetica.woff`} crossorigin />
     <title>{title}</title>
     <script type="application/ld+json">
       {JSON.stringify({

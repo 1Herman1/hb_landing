@@ -33,6 +33,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 <script>
   const video = document.getElementById('banner-video') as HTMLVideoElement;
+  const BASE_URL = import.meta.env.BASE_URL;
 
   // Respect prefers-reduced-motion
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -42,6 +43,9 @@ const BASE_URL = import.meta.env.BASE_URL;
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            if (!video.poster) {
+              video.poster = `${BASE_URL}media/banner/build-your-dream.jpg`;
+            }
             video.play().catch(() => {});
           } else {
             video.pause();
@@ -52,6 +56,8 @@ const BASE_URL = import.meta.env.BASE_URL;
     );
 
     observer.observe(video);
+  } else {
+    // prefers-reduced-motion: set poster to show a static frame
+    video.poster = `${BASE_URL}media/banner/build-your-dream.jpg`;
   }
-  // prefers-reduced-motion: video never plays, poster stays visible
 </script>
