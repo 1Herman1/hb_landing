@@ -9,12 +9,12 @@
     </div>
 
     <!-- Contact tiles grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-      <!-- Telegram tile -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-6 md:mb-8">
+      <!-- Telegram tile (accent) -->
       <a
         href="https://t.me/h_and_b_team"
-        class="flex items-center justify-center font-mono font-bold text-base md:text-lg p-4 md:p-6 border rounded-2xl transition-[filter] duration-200 ease-in-out hover:invert"
-        style="height: clamp(96px, 15vw, 138px); color: #151515; background: #F5F5F5; border-color: rgba(244, 244, 241, 0.7);"
+        class="flex items-center justify-center font-mono font-bold text-sm md:text-base p-3 md:p-4 border rounded-lg transition-colors duration-200 md:col-span-1 hover:opacity-90"
+        style="height: clamp(44px, 8vw, 56px); color: var(--color-foreground); background: var(--color-on-dark); border-color: rgba(244, 244, 241, 0.7);"
       >
         Telegram
       </a>
@@ -22,8 +22,8 @@
       <!-- Phone tile -->
       <a
         href="tel:+79169655611"
-        class="flex items-center justify-center font-mono font-bold text-base md:text-lg p-4 md:p-6 border rounded-2xl transition-[filter] duration-200 ease-in-out hover:invert"
-        style="height: clamp(96px, 15vw, 138px); color: #F4F4F1; border-color: rgba(244, 244, 241, 0.7);"
+        class="flex items-center justify-center font-mono font-bold text-sm md:text-base p-3 md:p-4 border rounded-lg transition-colors duration-200 hover:opacity-90"
+        style="height: clamp(44px, 8vw, 56px); color: var(--color-on-dark); border-color: rgba(244, 244, 241, 0.7);"
       >
         Позвонить
       </a>
@@ -31,16 +31,17 @@
       <!-- Email tile -->
       <a
         href="mailto:gera103546@gmail.com"
-        class="flex items-center justify-center font-mono font-bold text-base md:text-lg p-4 md:p-6 border rounded-2xl transition-[filter] duration-200 ease-in-out hover:invert"
-        style="height: clamp(96px, 15vw, 138px); color: #F4F4F1; border-color: rgba(244, 244, 241, 0.7);"
+        class="flex items-center justify-center font-mono font-bold text-sm md:text-base p-3 md:p-4 border rounded-lg transition-colors duration-200 hover:opacity-90"
+        style="height: clamp(44px, 8vw, 56px); color: var(--color-on-dark); border-color: rgba(244, 244, 241, 0.7);"
       >
         Email
       </a>
+    </div>
 
-      <!-- Top button -->
+    <!-- Top link -->
+    <div class="text-center">
       <button
-        class="flex items-center justify-center font-mono font-bold text-base md:text-lg p-4 md:p-6 border rounded-2xl transition-[filter] duration-200 ease-in-out hover:invert scroll-to-top"
-        style="height: clamp(96px, 15vw, 138px); color: #F4F4F1; border-color: rgba(244, 244, 241, 0.7);"
+        class="font-mono font-bold text-sm text-on-dark-muted hover:text-on-dark transition-colors duration-200 scroll-to-top py-2"
         aria-label="Наверх"
       >
         Наверх

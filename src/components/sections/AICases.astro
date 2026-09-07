@@ -4,7 +4,7 @@ import SectionTitle from '../ui/SectionTitle.astro';
 
 <section id="ai-cases" class="py-24 md:py-32 border-t border-dark-divider">
   <div class="max-w-6xl mx-auto px-5 md:px-8">
-    <SectionTitle number="04 /">
+    <SectionTitle number="03 /">
       ИИ в <span class="text-accent-on-dark">РЕАЛЬНЫХ</span> задачах
     </SectionTitle>
 
@@ -16,9 +16,9 @@ import SectionTitle from '../ui/SectionTitle.astro';
           solution: 'ИИ читает письмо и вложения, создаёт сделку в CRM, готовит черновик ответа, менеджер проверяет',
           result: '6 недель внедрения',
           metrics: [
-            '2 мин вместо 20',
-            '+30% заявок тем же штатом',
-            'окупилось за 3 месяца',
+            { number: '2 мин', description: 'вместо 20' },
+            { number: '+30%', description: 'заявок тем же штатом' },
+            { number: '3', description: 'месяца окупилось за' },
           ],
         },
         {
@@ -27,9 +27,9 @@ import SectionTitle from '../ui/SectionTitle.astro';
           solution: 'ИИ-консультант: 4 вопроса о коже → персональный набор → ответы 24/7, только каталог компании',
           result: 'Обучен на данных магазина',
           metrics: [
-            'конверсия +18%',
-            'поддержка −40%',
-            'чек +12%',
+            { number: '+18%', description: 'конверсия' },
+            { number: '−40%', description: 'поддержка' },
+            { number: '+12%', description: 'чек' },
           ],
         },
       ].map(({ title, task, solution, result, metrics }) => (
@@ -52,10 +52,15 @@ import SectionTitle from '../ui/SectionTitle.astro';
             </div>
           </div>
 
-          <div class="flex flex-col items-start gap-3">
-              {metrics.map((metric) => (
-                <div class="px-4 py-3 bg-accent-wash rounded-lg border border-accent-wash-line w-fit">
-                  <span class="text-accent-on-dark font-bold font-mono text-sm tabular-nums">{metric}</span>
+          <div class="flex flex-col items-start gap-6">
+              {metrics.map(({ number, description }) => (
+                <div class="flex flex-col gap-1">
+                  <div class="font-heading text-accent-on-dark tabular-nums" style="font-size: clamp(28px, 3vw, 44px); line-height: 1;">
+                    {number}
+                  </div>
+                  <div class="font-mono text-xs text-on-dark-muted uppercase tracking-[0.1em]">
+                    {description}
+                  </div>
                 </div>
               ))}
             </div>

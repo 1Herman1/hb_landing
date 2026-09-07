@@ -15,8 +15,8 @@ const baseClasses =
   'inline-flex items-center justify-center font-mono font-bold transition-transform duration-200 ease-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:ring-offset-dark relative overflow-hidden';
 
 const variantClasses = {
-  primary: 'text-[#090909] rounded-full hover:text-white',
-  'primary-cta': 'bg-accent text-white rounded-full hover:bg-accent-hover',
+  primary: 'rounded-full hover:text-white',
+  'primary-cta': 'text-white rounded-full',
   ghost: 'border border-dark-line text-on-dark hover:bg-dark-surface-hover rounded-full',
 };
 
@@ -42,13 +42,14 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
 <style>
   [data-variant='primary'] {
     position: relative;
+    color: var(--color-foreground);
   }
 
   [data-variant='primary']::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: #F97316;
+    background: var(--color-accent-on-dark);
     transform: translateY(100%);
     transition: transform 0.4s ease;
     z-index: 0;
@@ -58,7 +59,7 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
     content: '';
     position: absolute;
     inset: 0;
-    background: #F5F5F5;
+    background: var(--color-on-dark);
     z-index: 0;
   }
 
@@ -69,5 +70,13 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
   [data-variant='primary'] :global(*) {
     position: relative;
     z-index: 1;
+  }
+
+  [data-variant='primary-cta'] {
+    background: var(--color-accent-on-dark);
+  }
+
+  [data-variant='primary-cta']:hover {
+    background: var(--color-accent-on-dark-hv);
   }
 </style>

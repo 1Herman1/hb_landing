@@ -62,7 +62,7 @@ const chips = [
           muted
           loop
           playsinline
-          preload="metadata"
+          preload="auto"
           poster={`${BASE_URL}media/hero/germes.jpg`}
           aria-hidden="true"
           class="w-full h-full object-cover"
@@ -110,6 +110,23 @@ const chips = [
       <span class="block" style="color: #F5F5F5;">ГЕРМАН БРЫЗГАЛОВ</span>
       <span class="block" style="color: #F97316; font-size: 0.67em;">IT РАЗРАБОТКА И AI</span>
     </h1>
+
+    <!-- What & for whom -->
+    <p
+      class="text-center"
+      style="
+        font-family: var(--font-mono);
+        font-size: clamp(13px, 1.15vw, 16.5px);
+        line-height: 1.6;
+        color: #C4C9D0;
+        max-width: 46ch;
+        margin-top: clamp(12px, 1.2vw, 20px);
+        padding: 0 20px;
+        text-wrap: balance;
+      "
+    >
+      Сайты, порталы, SaaS и интернет-магазины для бизнеса — с внедрением ИИ в процессы
+    </p>
 
     <!-- Contact button (below heading) -->
     <button
