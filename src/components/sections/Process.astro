@@ -56,8 +56,9 @@ import processImage from '../../assets/process.jpg';
 </section>
 
 <script>
-  const button = document.querySelector('.open-contact-dialog');
-  button?.addEventListener('click', () => {
-    window.dispatchEvent(new Event('open-contact-dialog'));
+  document.querySelectorAll('.open-contact-dialog').forEach((button) => {
+    button.addEventListener('click', () => {
+      window.dispatchEvent(new Event('open-contact-dialog'));
+    });
   });
 </script>

@@ -16,7 +16,7 @@ const chips = [
 ];
 ---
 
-<section class="relative min-h-[100svh] bg-[#010101] text-white overflow-hidden flex flex-col items-center justify-center" style="padding-top: clamp(96px, 10vw, 132px);">
+<section class="relative min-h-[100svh] bg-[#010101] text-white overflow-hidden flex flex-col items-center justify-center" style="padding-top: clamp(48px, 4.5vw, 84px);">
   <!-- Top line: Sun icon + Name on the left, Telegram link on the right (absolute OVER the video zone) -->
   <div class="absolute top-10 left-0 right-0 z-50 flex items-center justify-between px-4 md:px-6">
     <!-- Left: Sun icon + Герман Брызгалов -->
@@ -216,14 +216,14 @@ const chips = [
     margin-left: auto;
     margin-right: auto;
     padding: 0 16px;
-    height: 363px;
+    height: min(363px, 44svh);
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .hero-video-box {
     position: relative;
-    width: min(338px, 86.6vw);
+    width: min(338px, 86.6vw, 44svh);
     aspect-ratio: 1026 / 1280;
     display: flex;
     align-items: center;
@@ -264,10 +264,10 @@ const chips = [
   }
   @media (min-width: 768px) {
     .hero-video-zone {
-      height: clamp(300px, 36vw, 518px);
+      height: min(clamp(300px, 36vw, 518px), 38svh);
     }
     .hero-video-box {
-      width: clamp(300px, 36vw, 518px);
+      width: min(clamp(300px, 36vw, 518px), 38svh);
     }
     .hero-chip {
       left: var(--dl);

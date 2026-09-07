@@ -31,11 +31,11 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
 
 {href ? (
   <a href={href} class={classes} data-variant={variant}>
-    <slot />
+    <span class="relative z-[1]"><slot /></span>
   </a>
 ) : (
   <button class={classes} data-variant={variant}>
-    <slot />
+    <span class="relative z-[1]"><slot /></span>
   </button>
 )}
 
@@ -73,7 +73,7 @@ const classes = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} 
   }
 
   [data-variant='primary-cta'] {
-    background: var(--color-accent-on-dark);
+    background: var(--color-accent);
   }
 
   [data-variant='primary-cta']:hover {
