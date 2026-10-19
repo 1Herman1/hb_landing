@@ -11,12 +11,12 @@ import { cases } from '../../content/cases';
       <span class="text-accent-on-dark">ИЗБРАННЫЕ</span> работы
     </SectionTitle>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
       {cases.map((caseItem) => (
         <article class="border border-dark-line rounded-2xl overflow-hidden bg-dark-surface hover:bg-dark-surface-hover hover:border-dark-line-strong transition-[background-color,border-color] duration-200">
           <!-- Название ВСЕГДА видно сверху -->
           <div class="px-6 md:px-8 pt-6 md:pt-8 pb-4">
-            <h3 class="text-2xl font-bold font-heading text-on-dark">{caseItem.name}</h3>
+            <h3 class="text-2xl font-normal font-heading text-on-dark">{caseItem.name}</h3>
           </div>
 
           <!-- Обложка ВСЕГДА видна, вне details -->

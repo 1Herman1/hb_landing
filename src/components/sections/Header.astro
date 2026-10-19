@@ -2,9 +2,9 @@
 import Button from '../ui/Button.astro';
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-dark-line opacity-0 pointer-events-none transition-opacity duration-300">
+<header class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-dark-line opacity-0 invisible pointer-events-none transition-[opacity,visibility] duration-300">
   <nav class="max-w-6xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
-    <a href="#" class="font-bold text-lg text-on-dark font-heading inline-flex items-center min-h-11 -my-2">H&B /</a>
+    <a href="#" class="font-normal text-lg text-on-dark font-heading inline-flex items-center min-h-11 -my-2">H&B /</a>
 
     <div class="hidden md:flex items-center gap-8 text-sm text-on-dark-muted">
       <a href="#services" class="hover:text-on-dark transition-colors">Услуги</a>
@@ -29,11 +29,11 @@ import Button from '../ui/Button.astro';
 
   const observer = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) {
-      header?.classList.add('opacity-0', 'pointer-events-none');
+      header?.classList.add('opacity-0', 'invisible', 'pointer-events-none');
     } else {
-      header?.classList.remove('opacity-0', 'pointer-events-none');
+      header?.classList.remove('opacity-0', 'invisible', 'pointer-events-none');
     }
-  }, { threshold: 0.1 });
+  }, { rootMargin: '-120px 0px 0px 0px', threshold: 0 });
 
   if (heroSection) {
     observer.observe(heroSection);

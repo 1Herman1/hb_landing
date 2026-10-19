@@ -6,13 +6,13 @@ const BASE_URL = import.meta.env.BASE_URL;
 // Chip positions from the approved canvas (Variant A, 390px artboard),
 // desktop offsets scaled ~1.45x around the face center
 const chips = [
-  { label: 'Веб-порталы',              ml: '1.8%',  mt: '20px',  dl: 'calc(50% - 273px)', dt: '11px' },
-  { label: 'Агрегаторы',               ml: '70%',   mt: '52px',  dl: 'calc(50% + 113px)', dt: '57px' },
-  { label: 'Сайты',                    ml: '7.2%',  mt: '113px', dl: 'calc(50% - 242px)', dt: '146px' },
-  { label: 'SaaS',                     ml: '74.9%', mt: '153px', dl: 'calc(50% + 141px)', dt: '204px' },
-  { label: 'ИИ-решения',               ml: '4.4%',  mt: '206px', dl: 'calc(50% - 258px)', dt: '281px' },
-  { label: 'Разработка CRM',           ml: '62.8%', mt: '247px', dl: 'calc(50% + 73px)',  dt: '340px' },
-  { label: 'Интеграции 1С и МойСклад', ml: '6.4%',  mt: '300px', dl: 'calc(50% - 247px)', dt: '417px' },
+  { label: 'Веб-порталы',              ml: '1.8%',  mt: '20px',  dl: 'calc(50% - 273px)', dt: '2%' },
+  { label: 'Агрегаторы',               ml: '70%',   mt: '52px',  dl: 'calc(50% + 113px)', dt: '11%' },
+  { label: 'Сайты',                    ml: '7.2%',  mt: '113px', dl: 'calc(50% - 242px)', dt: '28%' },
+  { label: 'SaaS',                     ml: '74.9%', mt: '153px', dl: 'calc(50% + 141px)', dt: '39%' },
+  { label: 'ИИ-решения',               ml: '4.4%',  mt: '206px', dl: 'calc(50% - 258px)', dt: '54%' },
+  { label: 'Разработка CRM',           ml: '62.8%', mt: '247px', dl: 'calc(50% + 73px)',  dt: '66%' },
+  { label: 'Интеграции 1С и МойСклад', ml: '6.4%',  mt: '300px', dl: 'calc(50% - 247px)', dt: '80%' },
 ];
 ---
 
@@ -273,7 +273,7 @@ const chips = [
     }
     .hero-chip {
       left: var(--dl);
-      top: var(--dt);
+      top: min(var(--dt), calc(100% - 46px));
     }
   }
 
@@ -291,6 +291,7 @@ const chips = [
 
   #hero-contact-btn {
     position: relative;
+    isolation: isolate;
     transition:
       transform 160ms var(--ease-out),
       box-shadow 220ms var(--ease-out);
