@@ -27,6 +27,7 @@ import vetMoscowShot3 from '../assets/cases/shots/vet-moscow-3.jpg';
 export interface CaseShot {
   src: ImageMetadata;
   caption: string;
+  video?: { src: string; poster: string };
 }
 
 export interface Case {
@@ -65,9 +66,17 @@ export const cases: Case[] = [
     image: proCosmetics,
     coverTagsRight: true,
     shots: [
-      { src: proCosmeticsShot1, caption: 'Главная: компьютер и телефон' },
+      {
+        src: proCosmeticsShot1,
+        caption: 'Главная: компьютер и телефон',
+        video: { src: 'media/cases/pro-cosmetics-main.mp4', poster: 'media/cases/pro-cosmetics-main.webp' },
+      },
       { src: proCosmeticsShot2, caption: 'Подбор ухода: вопросы и программа' },
-      { src: proCosmeticsShot3, caption: 'Сцена «Бестселлеры»' },
+      {
+        src: proCosmeticsShot3,
+        caption: 'Сцена «Бестселлеры»',
+        video: { src: 'media/cases/pro-cosmetics-bestsellers.mp4', poster: 'media/cases/pro-cosmetics-bestsellers.webp' },
+      },
     ],
     tags: ['E-commerce', 'Дизайн', 'Подбор ухода'],
     task: 'Магазин профессиональной косметики работал на WordPress: страницы брендов, на которые вело меню, открывались с ошибкой 404. Покупатели двух типов: розничный видит цены сразу, косметолог — оптовые, и только после проверки документов. Нужен был свой магазин с такими правилами и с подбором ухода по типу кожи и задаче.',
