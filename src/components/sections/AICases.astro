@@ -90,30 +90,6 @@ const solutions: Solution[] = [
                 <p class="text-on-dark-body max-w-[65ch]">{solution}</p>
               </div>
             </div>
-            <button
-              type="button"
-              data-ai-toggle
-              aria-expanded="false"
-              class="mt-6 inline-flex items-center gap-2 min-h-[44px] text-on-dark-body hover:text-accent-on-dark transition-colors duration-300"
-            >
-              <span data-ai-label>Подробнее</span>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
-                data-ai-arrow
-                class="inline-block flex-shrink-0 text-accent-on-dark transition-transform duration-300"
-              >
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
           </div>
 
           <details class="md:col-span-3">
@@ -138,6 +114,31 @@ const solutions: Solution[] = [
               </div>
             </div>
           </details>
+
+          <button
+            type="button"
+            data-ai-toggle
+            aria-expanded="false"
+            class="md:col-span-3 justify-self-start mt-6 inline-flex items-center gap-2 min-h-[44px] text-on-dark-body hover:text-accent-on-dark transition-colors duration-300"
+          >
+            <span data-ai-label>Подробнее</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+              data-ai-arrow
+              class="inline-block flex-shrink-0 text-accent-on-dark transition-transform duration-300"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </article>
       ))}
     </div>
@@ -157,7 +158,7 @@ const solutions: Solution[] = [
     details.addEventListener('toggle', () => {
       button.setAttribute('aria-expanded', String(details.open));
       label.textContent = details.open ? 'Свернуть' : 'Подробнее';
-      arrow.style.transform = details.open ? 'rotate(90deg)' : '';
+      arrow.style.transform = details.open ? 'rotate(-90deg)' : '';
     });
   });
 

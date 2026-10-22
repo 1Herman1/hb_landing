@@ -135,6 +135,7 @@ export const cases: Case[] = [
     id: 'dom-keramiki',
     name: 'Дом Керамики',
     image: domKeramiki,
+    coverPosition: 'center 100%',
     mockup: true,
     shots: [
       { src: domKeramikiShot1, caption: 'Карточка плитки' },
